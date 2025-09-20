@@ -27,6 +27,9 @@
     &quot;assignee&quot;: &quot;arefshamss&quot;
   }
 }</component>
+  <component name="GithubDefaultAccount">
+    <option name="defaultAccountId" value="8d833446-b719-4a59-abb1-cd96beea78fd" />
+  </component>
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/arefshamss/site.git&quot;,
@@ -116,7 +119,7 @@
       <workItem from="1754946999945" duration="90000" />
       <workItem from="1754947202830" duration="1284000" />
       <workItem from="1756762307501" duration="85000" />
-      <workItem from="1756762416474" duration="46000" />
+      <workItem from="1756762416474" duration="671000" />
     </task>
     <task id="LOCAL-00001" summary="favicon changed">
       <option name="closed" value="true" />
