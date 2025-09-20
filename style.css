@@ -6,6 +6,7 @@
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #1a1a1a;
     /*background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);*/
     background: linear-gradient(135deg, #2948c5 0%, #691212 100%);
     min-height: 100vh;
@@ -15,6 +16,7 @@ body {
     overflow-x: hidden;
     position: relative;
 }
+
 
 /* Animated Background */
 .bg-animation {
@@ -32,8 +34,14 @@ body {
     border-radius: 50%;
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     animation: float 20s infinite ease-in-out;
+
+    will-change: transform;
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
 }
+
 
 .shape1 {
     width: 300px;
