@@ -18,7 +18,6 @@ body {
   align-items: center;
   justify-content: center;
   padding: 20px;
-  /* background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); */
   background: linear-gradient(135deg, #00246bdd 0%, #000000 100%);
   position: relative;
   overflow: hidden;
@@ -33,21 +32,43 @@ body::before {
   width: 200%;
   height: 200%;
   background: radial-gradient(
-    circle,
-    rgba(255, 255, 255, 0.1) 1px,
-    transparent 1px
+          circle,
+          rgba(255, 255, 255, 0.1) 1px,
+          transparent 1px
   );
   background-size: 50px 50px;
   animation: float 20s ease-in-out infinite;
 }
 
+/* New animated background pattern */
+body::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, rgba(255, 255, 255, 0.05) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.05) 50%, rgba(255, 255, 255, 0.05) 75%, transparent 75%, transparent);
+  background-size: 20px 20px;
+  animation: moveBackground 15s linear infinite;
+  z-index: -1;
+}
+
 @keyframes float {
-  0%,
-  100% {
+  0%, 100% {
     transform: translate(0, 0) rotate(0deg);
   }
   50% {
     transform: translate(-20px, -20px) rotate(180deg);
+  }
+}
+
+@keyframes moveBackground {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 20px 20px;
   }
 }
 
@@ -65,6 +86,7 @@ body::before {
   border: 1px solid rgba(255, 255, 255, 0.2);
   box-shadow: 0 25px 45px rgba(0, 0, 0, 0.1);
   z-index: 1;
+  transition: all 0.3s ease;
 }
 
 /* Profile image container */
@@ -76,6 +98,20 @@ body::before {
   overflow: hidden;
   border: 3px solid rgba(255, 255, 255, 0.3);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  animation: pulse 3s infinite;
+  transition: transform 0.3s ease;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(255, 255, 255, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+  }
 }
 
 /* Apply to the actual img inside the container */
@@ -94,6 +130,11 @@ body::before {
   margin-bottom: 10px;
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
   cursor: default;
+  transition: all 0.3s ease;
+}
+
+.profile-name:hover {
+  text-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
 }
 
 .profile-title {
@@ -102,6 +143,11 @@ body::before {
   margin-bottom: 30px;
   font-weight: 300;
   text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.profile-title:hover {
+  color: rgba(255, 255, 255, 1);
 }
 
 /* Social media icons container */
@@ -127,6 +173,23 @@ body::before {
   text-decoration: none;
   transition: all 0.3s ease;
   backdrop-filter: blur(10px);
+  position: relative;
+  overflow: hidden;
+}
+
+.social-icon::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: all 0.5s ease;
+}
+
+.social-icon:hover::before {
+  left: 100%;
 }
 
 .social-icon:hover {
@@ -140,7 +203,33 @@ body::before {
   height: 30px;
 }
 
-/* Responsive design */
+/* Responsive design for desktop */
+@media (min-width: 1200px) {
+  .profile-card {
+    max-width: 500px;
+    padding: 50px 40px;
+  }
+
+  .profile-image {
+    width: 280px;
+    height: 280px;
+  }
+
+  .profile-name {
+    font-size: 36px;
+  }
+
+  .social-icons {
+    gap: 20px;
+  }
+
+  .social-icon {
+    width: 160px;
+    height: 55px;
+  }
+}
+
+/* Responsive design for tablets */
 @media (max-width: 768px) {
   .profile-card {
     max-width: 350px;
@@ -166,6 +255,30 @@ body::before {
   }
 }
 
+/* Landscape orientation for tablets and phones */
+@media (max-width: 768px) and (orientation: landscape) {
+  .profile-card {
+    max-width: 500px;
+    padding: 20px 15px;
+  }
+
+  .profile-image {
+    width: 150px;
+    height: 150px;
+  }
+
+  .social-icons {
+    flex-wrap: nowrap;
+    justify-content: space-between;
+  }
+
+  .social-icon {
+    width: 80px;
+    height: 40px;
+  }
+}
+
+/* Responsive design for mobile phones */
 @media (max-width: 480px) {
   body {
     padding: 15px;

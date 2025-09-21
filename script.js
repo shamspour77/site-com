@@ -31,3 +31,31 @@
     }
   }
 })();
+
+document.addEventListener('DOMContentLoaded', function() {
+
+  const nameElement = document.querySelector('.profile-name');
+  const nameText = nameElement.textContent;
+  nameElement.textContent = '';
+
+  let i = 0;
+  function typeWriter() {
+    if (i < nameText.length) {
+      nameElement.textContent += nameText.charAt(i);
+      i++;
+      setTimeout(typeWriter, 100);
+    }
+  }
+
+  typeWriter();
+
+  // اضافه کردن افکت پارالاکس به تصویر پروفایل
+  const profileImage = document.querySelector('.profile-image');
+
+  document.addEventListener('mousemove', (e) => {
+    const x = e.clientX / window.innerWidth;
+    const y = e.clientY / window.innerHeight;
+
+    profileImage.style.transform = `translate(${x * 10}px, ${y * 10}px)`;
+  });
+});
